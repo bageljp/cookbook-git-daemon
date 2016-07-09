@@ -1,0 +1,18 @@
+# default: off
+# description: The git dæmon allows git repositories to be exported using \
+#       the git:// protocol.
+
+service git
+{
+<% node['git-daemon']['enable'] -%>
+        disable         = no
+<% else -%>
+        disable         = yes
+<% end -%>
+        socket_type     = stream
+        wait            = no
+        user            = nobody
+        server          = /usr/libexec/git-core/git-daemon
+        server_args     = --base-path=<%= node['git-daemon']['repo_dir'] %> --export-all --user-path=public_git --syslog --inetd --verbose
+        log_on_failure  += USERID
+}
