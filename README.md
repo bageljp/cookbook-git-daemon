@@ -8,7 +8,7 @@ cookbook なので berkshelf で取ってきて使いましょう。
 
 * Berksfile
 ```ruby
-source "https://github.com/bageljp/"
+source "https://supermarket.chef.io"
 
 cookbook "git-daemon", git: "https://github.com/bageljp/cookbook-git-daemon.git"
 ```
